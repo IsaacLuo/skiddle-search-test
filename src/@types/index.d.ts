@@ -12,18 +12,18 @@ declare interface IEvent {
   cancellationReason: string;
   rescheduledDate: string;
   venue: {
-      id: number;
-      name: string;
-      address: string;
-      town: string;
-      postcode_lookup: string;
-      postcode: string;
-      country: string;
-      phone: string;
-      latitude: number; 
-      longitude: number;
-      type: string;
-      rating: number;
+    id: number;
+    name: string;
+    address: string;
+    town: string;
+    postcode_lookup: string;
+    postcode: string;
+    country: string;
+    phone: string;
+    latitude: number;
+    longitude: number;
+    type: string;
+    rating: number;
   };
   imageurl: string;
   largeimageurl: string;
@@ -33,9 +33,9 @@ declare interface IEvent {
   enddate: string;
   description: string;
   openingtimes: {
-      doorsopen: string;
-      doorsclose: string;
-      lastentry: string;
+    doorsopen: string;
+    doorsclose: string;
+    lastentry: string;
   };
   minage: numbe;
   imgoing: any;
@@ -45,8 +45,8 @@ declare interface IEvent {
   entryprice: string;
   eventvisibility: string;
   rep: {
-      enabled: boolean;
-  }
+    enabled: boolean;
+  };
 }
 
 declare interface ISearchResultList {
@@ -68,17 +68,17 @@ declare interface IEventDetail {
   cancellationReason: string;
   rescheduledDate: string;
   venue: {
-      id: string;
-      name: string;
-      address: string;
-      town: string;
-      postcode: string;
-      countrycode: string;
-      cityname: string;
-      phone: string;
-      latitude: string;
-      longitude: string;
-      link: string;
+    id: string;
+    name: string;
+    address: string;
+    town: string;
+    postcode: string;
+    countrycode: string;
+    cityname: string;
+    phone: string;
+    latitude: string;
+    longitude: string;
+    link: string;
   };
   imageurl: string;
   largeimageurl: string;
@@ -91,36 +91,36 @@ declare interface IEventDetail {
   enddate: string;
   description: string;
   openingtimes: {
-      doorsopen: string;
-      doorsclose: string;
-      lastentry: string;
+    doorsopen: string;
+    doorsclose: string;
+    lastentry: string;
   };
-  genres:{
-          genreid: number;
-          name: string;
-      }[];
+  genres: {
+    genreid: number;
+    name: string;
+  }[];
   entryprice: number;
   MinAge: number;
   going: {
-          userid: string;
-          name: string;
-          image: string;
-      }[];
+    userid: string;
+    name: string;
+    image: string;
+  }[];
   imgoing: number;
   goingtos: number;
   artists: {
-          artistid: string;
-          name: string;
-          image: string;
-          spotifymp3url: string;
-          spotifyartisturl: string;
-      }[];
+    artistid: string;
+    name: string;
+    image: string;
+    spotifymp3url: string;
+    spotifyartisturl: string;
+  }[];
   ticketStatus: string;
   tickets: boolean;
   paymentPlanTCs: string;
   eventVisibility: string;
   rep: {
-      enabled: boolean;
+    enabled: boolean;
   };
   seatingPlanID: string;
 }

@@ -29,10 +29,9 @@ const EventDescription = styled.p`
 `;
 
 const EventBriefBox: FunctionComponent<{ event: IEvent }> = ({ event }) => {
-
   return (
     <EventBox>
-      <EventImage src={event.largeimageurl} alt="event"/>
+      <EventImage src={event.largeimageurl} alt="event" />
       <EventTitle>{event.eventname}</EventTitle>
       <EventDescription>{event.description}</EventDescription>
       <div>
@@ -41,14 +40,14 @@ const EventBriefBox: FunctionComponent<{ event: IEvent }> = ({ event }) => {
       <div>
         <PushpinOutlined /> {event.venue.town}
       </div>
-        <Link to={`/events/${event.id}`}>
-          <Button
-            type="primary"
-            style={{ backgroundColor: GREEN_BACKGROUND_COLOR }}
-          >
-            view details
-          </Button>
-        </Link>
+      <Link to={`/events/${event.id}`}>
+        <Button
+          type="primary"
+          style={{ backgroundColor: GREEN_BACKGROUND_COLOR }}
+        >
+          view details
+        </Button>
+      </Link>
     </EventBox>
   );
 };

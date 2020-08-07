@@ -1,8 +1,8 @@
 import React, { FunctionComponent, useEffect } from "react";
-import { Spin } from 'antd';
-import styled from 'styled-components';
-import { useMappedState, useDispatch } from 'redux-react-hook';
-import { Descriptions} from 'antd';
+import { Spin } from "antd";
+import styled from "styled-components";
+import { useMappedState, useDispatch } from "redux-react-hook";
+import { Descriptions } from "antd";
 import { Link } from "react-router-dom";
 
 const LoadingPanel = styled.div`
@@ -46,57 +46,68 @@ const ArtistPanel = styled.section`
   flex-wrap: wrap;
 `;
 
-const EventDetail: FunctionComponent<{ id: string }> = ({id}) => {
-  const {
-    detail,
-  } = useMappedState((state:IStoreState)=>({
+const EventDetail: FunctionComponent<{ id: string }> = ({ id }) => {
+  const { detail } = useMappedState((state: IStoreState) => ({
     detail: state.app.currentEventDetail?.results,
   }));
 
   const dispatch = useDispatch();
 
-  useEffect(()=>{
+  useEffect(() => {
     if (detail === undefined) {
       dispatch({ type: "FETCH_EVENT_DETAIL", data: id });
     }
-    return ()=>{dispatch({ type: "SET_EVENT_DETAIL", data: undefined});}
+    return () => {
+      dispatch({ type: "SET_EVENT_DETAIL", data: undefined });
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[])
+  }, []);
 
   if (detail === undefined) {
-    return <LoadingPanel>
-      <Spin data-testid="spin"/>
-    </LoadingPanel>;
+    return (
+      <LoadingPanel>
+        <Spin data-testid="spin" />
+      </LoadingPanel>
+    );
   }
 
   return (
     <EventDetailPanel>
       <ImageSection>
-        <img src={detail.largeimageurl} alt="event"/>
+        <img src={detail.largeimageurl} alt="event" />
       </ImageSection>
       <EventDetailSection>
-      <h1>event details</h1>
-      <Descriptions bordered>
-        <Descriptions.Item label="event name">{detail.eventname}</Descriptions.Item>
-        <Descriptions.Item label="address">{detail.venue?.address}</Descriptions.Item>
-        <Descriptions.Item label="town">{detail.venue?.town}</Descriptions.Item>
-        <Descriptions.Item label="description">{detail.description}</Descriptions.Item>
-      </Descriptions>
+        <h1>event details</h1>
+        <Descriptions bordered>
+          <Descriptions.Item label="event name">
+            {detail.eventname}
+          </Descriptions.Item>
+          <Descriptions.Item label="address">
+            {detail.venue?.address}
+          </Descriptions.Item>
+          <Descriptions.Item label="town">
+            {detail.venue?.town}
+          </Descriptions.Item>
+          <Descriptions.Item label="description">
+            {detail.description}
+          </Descriptions.Item>
+        </Descriptions>
       </EventDetailSection>
       <ArtistSection>
-      <h1>artists</h1>
-      <ArtistPanel>
-        {detail.artists.map((artist, idx)=><div key={idx}>
-          <Link to={`/artists/${artist.artistid}`}>
-            <ArtistImg src={artist.image}/>
-            <ArtistName>{artist.name}</ArtistName>
-          </Link>
-        </div>)}
-      </ArtistPanel>
+        <h1>artists</h1>
+        <ArtistPanel>
+          {detail.artists.map((artist, idx) => (
+            <div key={idx}>
+              <Link to={`/artists/${artist.artistid}`}>
+                <ArtistImg src={artist.image} />
+                <ArtistName>{artist.name}</ArtistName>
+              </Link>
+            </div>
+          ))}
+        </ArtistPanel>
       </ArtistSection>
-
     </EventDetailPanel>
   );
-}
+};
 
 export default EventDetail;
