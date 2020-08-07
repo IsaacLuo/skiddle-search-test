@@ -30,4 +30,4 @@ export const appReducer = (state: IAppState, action: IAction): IAppState => {
 
 export const reducer = combineReducers({
   app: appReducer,
-} as IStoreState);
+});
